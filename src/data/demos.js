@@ -1,6 +1,20 @@
 import { BasicBox } from "../components/demos/BasicBox";
+import { CounterBox } from "../components/demos/CounterBox";
+import { DragBox } from "../components/demos/DragBox";
 import { GestureBox } from "../components/demos/GestureBox";
 import { KeyframeBox } from "../components/demos/KeyframeBox";
+import { ScrollRevealBox } from "../components/demos/ScrollRevealBox";
+import { StaggerExampleBox } from "../components/demos/StaggerExampleBox";
+import { ButtonAnimations } from "../components/demos/everyday/ButtonAnimations";
+import { CardAnimations } from "../components/demos/everyday/CardAnimations";
+import { DataVisualization } from "../components/demos/everyday/DataVisualization";
+import { FormAnimations } from "../components/demos/everyday/FormAnimations";
+import { IconAnimations } from "../components/demos/everyday/IconAnimations";
+import { ListAnimations } from "../components/demos/everyday/ListAnimations";
+import { LoadingAnimations } from "../components/demos/everyday/LoadingAnimations";
+import { ModalAnimations } from "../components/demos/everyday/ModalAnimations";
+import { NavigationAnimations } from "../components/demos/everyday/NavigationAnimations";
+import { TextAnimations } from "../components/demos/everyday/TextAnimations";
 
 export const demos = [
     {
@@ -41,22 +55,465 @@ export const demos = [
             },
         ],
     },
-    // KeyframeBox, AnimatedButton, ইত্যাদি এখানে যোগ করা হবে
     {
         slug: "keyframes",
-        title: "Keyframes",
+        title: "Keyframe Animation",
         component: KeyframeBox,
-        description: "একটি নির্দিষ্ট সময়ের মধ্যে একাধিক ধাপে অ্যানিমেশন চালানো।",
-        defaultProps: {},
-        controls: [],
+        description: "একাধিক ধাপের অ্যানিমেশন। animate প্রপ-এ অ্যারে ব্যবহার করে একাধিক ধাপে অ্যানিমেশন চালানো।",
+        defaultProps: {
+            duration: 2,
+            scaleValues: [1, 1.5, 1, 1.5, 1],
+            rotateValues: [0, 90, 0, -90, 0],
+            repeat: Infinity,
+            repeatDelay: 1,
+            scaleMax: 1.5,
+            rotateMax: 90,
+        },
+        controls: [
+            {
+                name: "duration",
+                label: "Duration",
+                type: "range",
+                min: 0.5,
+                max: 5,
+                step: 0.1,
+            },
+            {
+                name: "repeatDelay",
+                label: "Repeat Delay",
+                type: "range",
+                min: 0,
+                max: 3,
+                step: 0.1,
+            },
+            {
+                name: "scaleMax",
+                label: "Scale Max",
+                type: "range",
+                min: 1.1,
+                max: 3,
+                step: 0.1,
+            },
+            {
+                name: "rotateMax",
+                label: "Rotate Max",
+                type: "range",
+                min: 45,
+                max: 180,
+                step: 15,
+            },
+        ],
     },
     {
         slug: "gestures",
-        title: "Gestures",
+        title: "Gesture Animation",
         component: GestureBox,
         description:
             "Hover, tap, এবং focus-এর মতো ইউজার ইন্টারেকশনের উপর ভিত্তি করে অ্যানিমেশন।",
         defaultProps: {},
         controls: [],
+    },
+    {
+        slug: "drag",
+        title: "Drag Animation",
+        component: DragBox,
+        description: "মাউস দিয়ে এলিমেন্ট সরানোর সুবিধা। drag prop এবং dragConstraints ব্যবহার করে।",
+        defaultProps: {},
+        controls: [],
+    },
+    {
+        slug: "counter",
+        title: "Smooth Counter",
+        component: CounterBox,
+        description: "React + Framer Motion দিয়ে Smooth Counter অ্যানিমেশন।",
+        defaultProps: {},
+        controls: [],
+    },
+    {
+        slug: "scroll-reveal",
+        title: "Scroll Reveal",
+        component: ScrollRevealBox,
+        description: "Scroll Reveal Animation (Fade + Slide) - whileInView ব্যবহার করে।",
+        defaultProps: {},
+        controls: [],
+    },
+    {
+        slug: "stagger-example",
+        title: "Stagger Example",
+        component: StaggerExampleBox,
+        description: "সুন্দর পরপর আসা এলিমেন্ট - staggerChildren দিয়ে।",
+        defaultProps: {},
+        controls: [],
+    },
+    // Everyday Animations
+    {
+        slug: "text-animations",
+        title: "Text Animations",
+        component: TextAnimations,
+        description: "টেক্সট অ্যানিমেশন - টাইপিং, ফেড, স্লাইড এবং স্কেল এফেক্ট।",
+        defaultProps: {
+            typingSpeed: 0.1,
+            staggerDelay: 0.1,
+            fadeDuration: 0.5,
+        },
+        controls: [
+            {
+                name: "typingSpeed",
+                label: "Typing Speed",
+                type: "range",
+                min: 0.05,
+                max: 0.3,
+                step: 0.01,
+            },
+            {
+                name: "staggerDelay",
+                label: "Stagger Delay",
+                type: "range",
+                min: 0.05,
+                max: 0.3,
+                step: 0.01,
+            },
+            {
+                name: "fadeDuration",
+                label: "Fade Duration",
+                type: "range",
+                min: 0.2,
+                max: 1.5,
+                step: 0.1,
+            },
+        ],
+    },
+    {
+        slug: "icon-animations",
+        title: "Icon Animations",
+        component: IconAnimations,
+        description: "আইকন অ্যানিমেশন - রোটেট, স্কেল, বাউন্স এবং হোভার এফেক্ট।",
+        defaultProps: {
+            rotateSpeed: 2,
+            bounceHeight: 20,
+            scaleAmount: 1.2,
+        },
+        controls: [
+            {
+                name: "rotateSpeed",
+                label: "Rotate Speed",
+                type: "range",
+                min: 1,
+                max: 5,
+                step: 0.5,
+            },
+            {
+                name: "bounceHeight",
+                label: "Bounce Height",
+                type: "range",
+                min: 10,
+                max: 50,
+                step: 5,
+            },
+            {
+                name: "scaleAmount",
+                label: "Scale Amount",
+                type: "range",
+                min: 1.1,
+                max: 2,
+                step: 0.1,
+            },
+        ],
+    },
+    {
+        slug: "modal-animations",
+        title: "Modal Animations",
+        component: ModalAnimations,
+        description: "মোডাল অ্যানিমেশন - ফেড ইন/আউট, স্কেল এবং স্লাইড এফেক্ট।",
+        defaultProps: {
+            fadeDuration: 0.3,
+            scaleAmount: 0.9,
+            slideDistance: 50,
+        },
+        controls: [
+            {
+                name: "fadeDuration",
+                label: "Fade Duration",
+                type: "range",
+                min: 0.1,
+                max: 1,
+                step: 0.1,
+            },
+            {
+                name: "scaleAmount",
+                label: "Scale Amount",
+                type: "range",
+                min: 0.5,
+                max: 1,
+                step: 0.05,
+            },
+            {
+                name: "slideDistance",
+                label: "Slide Distance",
+                type: "range",
+                min: 20,
+                max: 100,
+                step: 10,
+            },
+        ],
+    },
+    {
+        slug: "list-animations",
+        title: "List Animations",
+        component: ListAnimations,
+        description: "লিস্ট অ্যানিমেশন - স্ট্যাগার, ফেড এবং স্লাইড এফেক্ট।",
+        defaultProps: {
+            staggerDelay: 0.1,
+            fadeDuration: 0.5,
+            slideDistance: 30,
+        },
+        controls: [
+            {
+                name: "staggerDelay",
+                label: "Stagger Delay",
+                type: "range",
+                min: 0.05,
+                max: 0.3,
+                step: 0.01,
+            },
+            {
+                name: "fadeDuration",
+                label: "Fade Duration",
+                type: "range",
+                min: 0.2,
+                max: 1,
+                step: 0.1,
+            },
+            {
+                name: "slideDistance",
+                label: "Slide Distance",
+                type: "range",
+                min: 10,
+                max: 80,
+                step: 5,
+            },
+        ],
+    },
+    {
+        slug: "button-animations",
+        title: "Button Animations",
+        component: ButtonAnimations,
+        description: "বাটন অ্যানিমেশন - হোভার, ক্লিক, এবং লোডিং স্টেট।",
+        defaultProps: {
+            hoverScale: 1.05,
+            clickScale: 0.95,
+            rippleSize: 20,
+        },
+        controls: [
+            {
+                name: "hoverScale",
+                label: "Hover Scale",
+                type: "range",
+                min: 1.01,
+                max: 1.2,
+                step: 0.01,
+            },
+            {
+                name: "clickScale",
+                label: "Click Scale",
+                type: "range",
+                min: 0.8,
+                max: 0.99,
+                step: 0.01,
+            },
+            {
+                name: "rippleSize",
+                label: "Ripple Size",
+                type: "range",
+                min: 10,
+                max: 50,
+                step: 5,
+            },
+        ],
+    },
+    {
+        slug: "card-animations",
+        title: "Card Animations",
+        component: CardAnimations,
+        description: "কার্ড অ্যানিমেশন - হোভার, ফ্লিপ, এবং ইন্টারেক্টিভ এফেক্ট।",
+        defaultProps: {
+            hoverElevation: 8,
+            flipDuration: 0.6,
+            staggerDelay: 0.1,
+        },
+        controls: [
+            {
+                name: "hoverElevation",
+                label: "Hover Elevation",
+                type: "range",
+                min: 4,
+                max: 16,
+                step: 1,
+            },
+            {
+                name: "flipDuration",
+                label: "Flip Duration",
+                type: "range",
+                min: 0.3,
+                max: 1.2,
+                step: 0.1,
+            },
+            {
+                name: "staggerDelay",
+                label: "Stagger Delay",
+                type: "range",
+                min: 0.05,
+                max: 0.3,
+                step: 0.01,
+            },
+        ],
+    },
+    {
+        slug: "form-animations",
+        title: "Form Animations",
+        component: FormAnimations,
+        description: "ফর্ম অ্যানিমেশন - ভ্যালিডেশন, ফোকাস, এবং ইনপুট এফেক্ট।",
+        defaultProps: {
+            focusScale: 1.02,
+            errorShake: 10,
+            successBounce: 5,
+        },
+        controls: [
+            {
+                name: "focusScale",
+                label: "Focus Scale",
+                type: "range",
+                min: 1.01,
+                max: 1.1,
+                step: 0.01,
+            },
+            {
+                name: "errorShake",
+                label: "Error Shake",
+                type: "range",
+                min: 5,
+                max: 20,
+                step: 1,
+            },
+            {
+                name: "successBounce",
+                label: "Success Bounce",
+                type: "range",
+                min: 2,
+                max: 15,
+                step: 1,
+            },
+        ],
+    },
+    {
+        slug: "loading-animations",
+        title: "Loading Animations",
+        component: LoadingAnimations,
+        description: "লোডিং অ্যানিমেশন - স্পিনার, স্কেলেটন, এবং প্রোগ্রেস বার।",
+        defaultProps: {
+            spinnerSpeed: 1,
+            pulseDuration: 1.5,
+            progressSpeed: 2,
+        },
+        controls: [
+            {
+                name: "spinnerSpeed",
+                label: "Spinner Speed",
+                type: "range",
+                min: 0.5,
+                max: 3,
+                step: 0.1,
+            },
+            {
+                name: "pulseDuration",
+                label: "Pulse Duration",
+                type: "range",
+                min: 0.8,
+                max: 3,
+                step: 0.1,
+            },
+            {
+                name: "progressSpeed",
+                label: "Progress Speed",
+                type: "range",
+                min: 1,
+                max: 5,
+                step: 0.5,
+            },
+        ],
+    },
+    {
+        slug: "navigation-animations",
+        title: "Navigation Animations",
+        component: NavigationAnimations,
+        description: "নেভিগেশন অ্যানিমেশন - মেনু, ট্যাব, এবং ব্রেডক্রাম্ব।",
+        defaultProps: {
+            slideDistance: 20,
+            fadeDuration: 0.3,
+            staggerDelay: 0.1,
+        },
+        controls: [
+            {
+                name: "slideDistance",
+                label: "Slide Distance",
+                type: "range",
+                min: 10,
+                max: 50,
+                step: 5,
+            },
+            {
+                name: "fadeDuration",
+                label: "Fade Duration",
+                type: "range",
+                min: 0.2,
+                max: 0.8,
+                step: 0.1,
+            },
+            {
+                name: "staggerDelay",
+                label: "Stagger Delay",
+                type: "range",
+                min: 0.05,
+                max: 0.2,
+                step: 0.01,
+            },
+        ],
+    },
+    {
+        slug: "data-visualization",
+        title: "Data Visualization",
+        component: DataVisualization,
+        description: "ডেটা ভিজ্যুয়ালাইজেশন - চার্ট, গ্রাফ, এবং স্ট্যাটিসটিক্স।",
+        defaultProps: {
+            barHeight: 100,
+            chartDuration: 1.5,
+            staggerDelay: 0.1,
+        },
+        controls: [
+            {
+                name: "barHeight",
+                label: "Bar Height",
+                type: "range",
+                min: 50,
+                max: 200,
+                step: 10,
+            },
+            {
+                name: "chartDuration",
+                label: "Chart Duration",
+                type: "range",
+                min: 0.8,
+                max: 3,
+                step: 0.1,
+            },
+            {
+                name: "staggerDelay",
+                label: "Stagger Delay",
+                type: "range",
+                min: 0.05,
+                max: 0.3,
+                step: 0.01,
+            },
+        ],
     },
 ];
